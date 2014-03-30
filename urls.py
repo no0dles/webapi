@@ -1,0 +1,3 @@
+urlpatterns = (
+    (r'^/$', 'endpoints.MyEndpoint'),
+)
