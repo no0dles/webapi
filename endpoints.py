@@ -1,17 +1,12 @@
 from webapi.http.response import HttpResponse
-from webapi.core.auth import allowed_roles
+from webapi.core.auth import allowed_roles, requires_auth
 
 
 class MyEndpoint(object):
-    #@allowed_roles(['Admin'])
+    @allowed_roles(roles=['Admin'])
     def get(self, request):
-        return HttpResponse(
-            """
-            <form enctype="multipart/form-data" action="save_file.py" method="post">
-            <p>File: <input type="file" name="file"></p>
-            <p><input type="submit" value="Upload"></p>
-            </form>
-            """, headers={'Content-Type': 'text/html'})
+        return HttpResponse({'echo': 'hi'})
 
+    @requires_auth
     def post(self, request):
         return HttpResponse({'server': request.json})

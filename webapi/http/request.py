@@ -27,6 +27,9 @@ class HttpRequest(object):
         self.body = None
         self.json = None
 
+        self.user = None
+        self.roles = []
+
         #get content-length if set
         try:
             self.content_length = int(environ.get('CONTENT_LENGTH', '0'))

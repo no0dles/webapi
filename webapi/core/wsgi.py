@@ -34,4 +34,12 @@ class WSGIHandler(object):
         #return response body
         return response.get_body_response()
 
+    def authorized(self):
+        if 'Admin' in self.groups:
+            return True
 
+    def authentificate_user(self, request):
+        return 'Pascal'
+
+    def authentificate_group(self):
+        return 'Admin'

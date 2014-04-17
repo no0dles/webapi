@@ -33,9 +33,16 @@ class Router(object):
         if endpoint_instance:
             try:
                 #get and execute endpoint method
-                return getattr(endpoint_instance, request.method.lower())(request)
+                func = getattr(endpoint_instance, request.method.lower())
+
+                print func
+
+                if func:
+                    return func(request)
+
             except AttributeError:
                 #do nothing if method does not exist
+                print "Function don't exist"
                 pass
 
         return None

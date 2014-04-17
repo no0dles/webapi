@@ -35,6 +35,11 @@ class NotAcceptableResponse(HttpResponse):
         super(NotAcceptableResponse, self).__init__(body=body, status=406, headers=headers)
 
 
+class UnauthorizedResponse(HttpResponse):
+    def __init__(self, body='', headers={}):
+        super(UnauthorizedResponse, self).__init__(body=body, status=401, headers=headers)
+
+
 REASON_PHRASES = {
     100: 'CONTINUE',
     101: 'SWITCHING PROTOCOLS',
